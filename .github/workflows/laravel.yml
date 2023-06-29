@@ -1,0 +1,26 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Deploy Mentor Application
+       uses: appleboy/ssh-action@v0.1.2
+       with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cd /opt/laravel/Mentor-Web # navigate into the folders
+          git pull
+          php artisan cache:clear
+          php artisan config:clear
+          php artisan view:clear
+          php artisan route:clear
