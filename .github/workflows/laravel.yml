@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd /opt/laravel/Mentor-Web # navigate into the folders
+          cd /opt/laravel/php-laravel-hello-world # navigate into the folders
           git pull
           php artisan cache:clear
           php artisan config:clear
